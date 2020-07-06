@@ -1,9 +1,9 @@
-const pug = require("pug");
+// const pug = require("pug");
 const express = require("express");
 
 const app = express();
 
-// Express view engine을 pug로 설정
+// Express view engine 을 pug 로 설정
 app.set("view engine", "pug");
 
 app.get("/", function (req, res, next) {

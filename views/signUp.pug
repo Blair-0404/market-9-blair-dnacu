@@ -1,0 +1,66 @@
+doctype html
+html(lang='en')
+  head
+    title #{locals.title}
+    script(type='text/javascript').
+      console.log('Hello World!')
+  body
+    #signup-wrap
+      h1.title 배민 사장님 광장
+      form
+        .user-info-wrap
+          input(
+          type="text"
+          placeholder="아이디 *(4~20)"
+          minlength="4"
+          maxlength="20"
+          )
+          input(
+          type="password"
+          placeholder="비밀번호*(영문+숫자, 8~20자)"
+          minlength="8"
+          maxlength="20"
+          )
+          input(
+            type="password"
+            placeholder="비밀번호 재확인"
+            minlength="8"
+            maxlength="20"
+          )
+          input(
+            type="text"
+            placeholder="이메일 앞자리*"
+          )
+          .email @
+          input(
+            type="text"
+            placeholder="이메일 뒷자리*"
+          )
+          select#email-select(
+          name="이메일"
+          )
+            option(
+            value=""
+            selected="true"
+            ) 이메일 선택
+            option(
+              value="google"
+            ) @gmail.com
+            option(
+              value="naver"
+            ) @naver.com
+            option(
+              value="woowa"
+            ) @woowa.com
+          input(
+            type="text"
+            placeholder="이름*"
+          )
+          input(
+            type="number"
+            placeholder="휴대폰*"
+          )
+          input(
+            type="button"
+            value="인증받기"
+          )
