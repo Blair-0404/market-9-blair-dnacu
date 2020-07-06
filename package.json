@@ -1,0 +1,23 @@
+{
+  "name": "market-9-blair-dnacu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woowa-techcamp-2020/market-9-blair-dnacu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woowa-techcamp-2020/market-9-blair-dnacu/issues"
+  },
+  "homepage": "https://github.com/woowa-techcamp-2020/market-9-blair-dnacu#readme",
+  "dependencies": {
+    "pug": "^3.0.0"
+  }
+}
