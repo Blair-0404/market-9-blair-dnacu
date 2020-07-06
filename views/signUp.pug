@@ -9,9 +9,9 @@ html(lang='en')
       console.log('Hello World!')
   body
     #signup-wrap
-      h1.title 배민 사장님 광장
+      .title 배민 사장님 광장
       form
-        .user-info-wrap
+        .user-info-wrap.section
           .please-info 필수 정보를 입력해주세요.
           input(
           type="text"
@@ -88,3 +88,62 @@ html(lang='en')
           ul
             li 인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.
             li 인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.
+        
+        .address-wrap.section
+          .checkbox-wrap
+            input(
+              type="checkbox"
+              checked=false
+            )
+            div 선택 정보를 입력하시겠어요?
+            div.underline.small-font 내용보기
+          .postal-code-wrap
+            input(
+              type="text"
+              placeholder="우편번호"
+            )
+            input(
+              type="button"
+              value="주소찾기"
+            )
+          input(
+            type="text"
+            placeholder="주소"
+          )
+          input(
+            type="text"
+            placeholder="상세 주소"
+          )
+        
+        .agree-wrap
+          .checkbox-wrap
+            input(
+              type="checkbox"
+              checked=false
+            )
+            div 전체 약관에 동의합니다
+          .checkbox-wrap
+            input(
+              type="checkbox"
+              checked=false
+            )
+            
+            div 필수 항목에 동의합니다.
+              .agree-underline-section
+                .underline 배민사장님광장 이용약관
+                .underline 개인정보 수집이용 동의
+          .checkbox-wrap
+            input(
+              type="checkbox"
+              checked=false
+            )
+            div 광고성 정보 수신 동의 (선택)
+          .age-cutline.small-font 만 14세 이상 회원만 가입 가능합니다. 
+            .underline 내용보기
+        input.finish-button(
+          type="submit"
+          value="가입완료"
+        )        
+
+
+

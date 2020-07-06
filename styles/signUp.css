@@ -1,7 +1,7 @@
 #signup-wrap {
-  width: 340px;
+  width: 380px;
   margin: 0 auto;
-  height: 100vh;
+  /* height: 100vh; */
 
   display: flex;
   flex-direction: column;
@@ -48,7 +48,11 @@ select {
   display: none;
 }
 
-#signup-wrap .phone-auth-wrap input[type="button"] {
+#signup-wrap .address-wrap .postal-code-wrap {
+  display: flex;
+}
+
+#signup-wrap input[type="button"] {
   width: 150px;
   margin-left: 10px;
   background-color: white;
@@ -60,4 +64,53 @@ select {
   font-size: 0.8rem;
   line-height: 20px;
   color: grey;
+}
+
+#signup-wrap .checkbox-wrap {
+  display: flex;
+  line-height: 28px;
+  margin-bottom: 10px;
+}
+
+#signup-wrap input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  outline: none;
+  margin-right: 10px;
+}
+
+#signup-wrap .agree-wrap .agree-underline-section {
+  display: flex;
+}
+
+#signup-wrap .agree-wrap .checkbox-wrap:first-child {
+  font-weight: bold;
+}
+
+#signup-wrap .underline {
+  color: gray;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+#signup-wrap .agree-wrap .age-cutline {
+  display: flex;
+}
+
+#signup-wrap .small-font {
+  font-size: 0.8rem;
+}
+
+#signup-wrap .section {
+  margin-bottom: 60px;
+}
+
+#signup-wrap .finish-button {
+  margin-top: 30px;
+  background-color: rgb(56, 125, 246);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 5px 0;
+  box-sizing: content-box;
 }
