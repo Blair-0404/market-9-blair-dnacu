@@ -2,6 +2,7 @@ doctype html
 html(lang='en')
   head
     title #{locals.title}
+    meta( name='viewport', content='width=device-width, initial-scale=1.0')
     style
       include ../styles/reset.css
       include ../styles/signUp.css
@@ -9,7 +10,10 @@ html(lang='en')
       console.log('Hello World!')
   body
     #signup-wrap
-      .title 배민 사장님 광장
+      img.title(
+        src="https://ceo.baemin.com/lockpath/images/logo-ceo.png"
+        alt=""
+      )
       form
         .user-info-wrap.section
           .please-info 필수 정보를 입력해주세요.

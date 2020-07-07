@@ -12,6 +12,12 @@
   padding: 60px;
 }
 
+#signup-wrap img.title {
+  max-width: 300px;
+  max-height: 100px;
+  margin-bottom: 50px;
+}
+
 #signup-wrap .user-info-wrap .please-info {
   margin: 20px 0;
 }
