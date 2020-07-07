@@ -11,20 +11,22 @@ html(lang='en')
       console.log('Hello World!')
   body
     #signin-wrap
-      img.title(
-        src="https://ceo.baemin.com/lockpath/images/logo-ceo.png"
-        alt=""
-      )
+      a(href="/")
+        img.title(
+          src="https://ceo.baemin.com/lockpath/images/logo-ceo.png"
+          alt=""
+        )
       form
-        input(
+        div.err 아이디를 입력해 주세요.
+        input.id(
         type="text"
-        placeholder="아이디 *(4~20)"
+        placeholder="아이디"
         minlength="4"
         maxlength="20"
         )
-        input(
+        input.password(
         type="password"
-        placeholder="비밀번호*(영문+숫자, 8~20자)"
+        placeholder="비밀번호"
         minlength="8"
         maxlength="20"
         )
@@ -42,4 +44,6 @@ html(lang='en')
         type='submit'
         value='로그인'
       )
-    
+  
+    script(type="module")
+      include ./signIn.js
