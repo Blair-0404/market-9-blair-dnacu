@@ -1,17 +1,20 @@
-// const pug = require("pug");
 const express = require("express");
 
 const app = express();
 
 // Express view engine 을 pug 로 설정
 app.set("view engine", "pug");
+// root directory 설정 (app.views의 값을 변경한다.)
+app.set("views", __dirname + "/pages");
+
+console.log(app);
 
 app.get("/", function (req, res, next) {
   const locals = {
     title: "배민상회",
   };
 
-  res.render("Main", locals);
+  res.render("main/main.pug", locals);
 });
 
 app.get("/signUp", function (req, res, next) {
@@ -19,7 +22,7 @@ app.get("/signUp", function (req, res, next) {
     title: "회원가입",
   };
 
-  res.render("SignUp", locals);
+  res.render("signUp/signUp.pug", locals);
 });
 
 app.get("/signIn", function (req, res, next) {
@@ -27,7 +30,7 @@ app.get("/signIn", function (req, res, next) {
     title: "로그인",
   };
 
-  res.render("SignIn", locals);
+  res.render("signIn/signIn.pug", locals);
 });
 
 app.get("/complete", function (req, res, next) {
@@ -35,7 +38,7 @@ app.get("/complete", function (req, res, next) {
     title: "가입완료",
   };
 
-  res.render("signUpComplete", locals);
+  res.render("signUpComplete/signUpComplete.pug", locals);
 });
 
 app.listen(8080);
