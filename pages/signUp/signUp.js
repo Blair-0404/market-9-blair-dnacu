@@ -33,18 +33,25 @@ function isValidatedId() {
         label.textContent = generalErrorMsg;
     } else {
         id.classList.remove("invalid");
-        label.textContent  = validateMsg;
+        label.textContent = validateMsg;
     }
 }
 
 // name
-
 name.addEventListener('focusout', (e) => {
     e.preventDefault();
-    isValidatedId();
+    isValidatedName();
 })
 
+function isValidatedName() {
+    const nameValue = name.value.trim();
+    const generalRegExpName = /[ㄱ-ㅎ|가-힣|a-z|A-Z|\*]+$/;
+    const isGeneralRegEx = generalRegExpName.test(nameValue);
+    const label = document.querySelector('.name-msg');
+    const nameErrorMsg = "이름에 특수문자, 숫자는 입력하실 수 없습니다. 다시 입력해주세요.";
 
-function isValidatedPassword() {
-
+    if (!isGeneralRegEx) {
+        name.classList.add("invalid");
+        label.textContent = nameErrorMsg;
+    }
 }

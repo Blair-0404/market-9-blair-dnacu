@@ -54,7 +54,11 @@ html(lang='en')
                         option(
                             value="직접입력"
                         ) 직접입력
-                    +input("name", "text", "이름*")
+                    input.name(
+                        type="text"
+                        placeholder="이름*"
+                    )
+                    label.name-msg
                     .phone-auth-wrap
                         .phone-input
                             +input("phone", "number", "휴대폰*")
