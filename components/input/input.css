@@ -5,7 +5,6 @@
   padding: 8px;
   box-sizing: border-box;
   font-size: 15px;
-
   border: 2px solid rgb(239, 239, 239);
 }
 
@@ -16,10 +15,15 @@
   color: gray;
 }
 
+.input-box.red {
+  width:100%;
+}
+
 .input-box.red input {
-  border-color: red;
+  /*border-color: red;*/
 }
 
 .input-box.red label {
   color: red;
+  display: none;
 }

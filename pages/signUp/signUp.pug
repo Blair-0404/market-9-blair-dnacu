@@ -6,8 +6,8 @@ html(lang='en')
     style
       include ./signUp.css
       include ../../styles/reset.css
-    script(type='text/javascript').
-      console.log('Hello World!')
+    script(type='module')
+      include ./signUp.js
   body
     #signup-wrap
       img.title(
@@ -20,23 +20,14 @@ html(lang='en')
           include ../../components/input/input.pug
           style 
             include ../../components/input/input.css
-
-          +input("text", "아이디 *(4~20)", "4", "20")
-
-          +input("password", "비밀번호*(영문+숫자, 8~20자)", "8", "20")
-
-          +input("password", "비밀번호 재확인", "8", "20")
-
-          +input("text", "이메일 앞자리*", "8", "20")
-
-          
-          +input("password", "비밀번호*(영문+숫자, 8~20자)", "8", "20")
-
+          +input("id","text", "아이디 *(4~20)", "4", "20" )
+          +input("password", "password", "비밀번호*(영문+숫자, 8~20자)", "8", "20")
+          +input("password2", "password", "비밀번호 재확인", "8", "20")
+          +input("email", "text", "이메일 앞자리*", "8", "20")
           .email-wrap
-            +input("text", "이메일 앞자리*", "8", "20")
+            +input("email-top", "text", "이메일 앞자리*", "8", "20")
             .email @
-            +input("text", "이메일 뒷자리*", "8", "20")
-
+            +input("email-bottom", "text", "이메일 뒷자리*", "8", "20")
           select#email-select(
           name="이메일"
           )
@@ -46,24 +37,21 @@ html(lang='en')
             ) 이메일 선택
             option(
               value="google"
-            ) @gmail.com
+            ) gmail.com
             option(
               value="naver"
-            ) @naver.com
+            ) naver.com
             option(
               value="woowa"
-            ) @woowa.com
-          input(
-            type="text"
-            placeholder="이름*"
-          )
+            ) woowa.com
+            option(
+              value="직접입력"
+            ) 직접입력
+          +input("name", "text", "이름*")
           .phone-auth-wrap
             .phone-input
+              +input("phone", "number", "휴대폰*")
               input(
-                type="number"
-                placeholder="휴대폰*"
-              )
-              input.auth-button(
                 type="button"
                 value="인증받기"
               )
@@ -72,12 +60,8 @@ html(lang='en')
                 value="재전송"
               )
             .auth-input.hide
-              input(
-                type="number"
-                placeholder="인증번호 6자리 입력"
-                maxlength="6"
-              )
-              input.blue-button(
+              +input("auth-number", "number", "인증번호 6자리 입력", "6", "6")
+              input.blue-button.hide(
                 type="button"
                 value="확인"
               )  
@@ -94,23 +78,16 @@ html(lang='en')
             div 선택 정보를 입력하시겠어요?
             div.underline.small-font 내용보기
           .postal-code-wrap
-            input(
-              type="text"
-              placeholder="우편번호"
-            )
-            input(
-              type="button"
-              value="주소찾기"
-            )
-          input(
-            type="text"
-            placeholder="주소"
-          )
-          input(
-            type="text"
-            placeholder="상세 주소"
-          )
-        
+            .search-postal-code
+              +input("address-number", "text", "우편번호")
+              input.blue-button(
+                type="button"
+                value="주소찾기"
+              )
+            +input("address-text", "text", "주소")
+            +input("address-detail-text", "text", "상세주소")
+
+
         .agree-wrap
           .checkbox-wrap
             input(

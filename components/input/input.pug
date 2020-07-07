@@ -1,6 +1,7 @@
-mixin input(type, placeholder, min, max)
+mixin input(name, type, placeholder, min, max)
   .input-box.red
     input(
+    class=name
     type=type
     placeholder=placeholder
     minlength=min
