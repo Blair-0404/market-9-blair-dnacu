@@ -7,8 +7,6 @@ app.set("view engine", "pug");
 // root directory 설정 (app.views의 값을 변경한다.)
 app.set("views", __dirname + "/pages");
 
-console.log(app);
-
 app.get("/", function (req, res, next) {
   const locals = {
     title: "배민상회",

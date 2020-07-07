@@ -1,14 +1,12 @@
 #signin-wrap {
   width: 380px;
   margin: 0 auto;
-  /* height: 100vh; */
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  border: 1px solid black;
   padding: 40px 60px;
 }
 

@@ -17,34 +17,26 @@ html(lang='en')
       form
         .user-info-wrap.section
           .please-info 필수 정보를 입력해주세요.
-          input(
-          type="text"
-          placeholder="아이디 *(4~20)"
-          minlength="4"
-          maxlength="20"
-          )
-          input(
-          type="password"
-          placeholder="비밀번호*(영문+숫자, 8~20자)"
-          minlength="8"
-          maxlength="20"
-          )
-          input(
-            type="password"
-            placeholder="비밀번호 재확인"
-            minlength="8"
-            maxlength="20"
-          )
+          include ../../components/input/input.pug
+          style 
+            include ../../components/input/input.css
+
+          +input("text", "아이디 *(4~20)", "4", "20")
+
+          +input("password", "비밀번호*(영문+숫자, 8~20자)", "8", "20")
+
+          +input("password", "비밀번호 재확인", "8", "20")
+
+          +input("text", "이메일 앞자리*", "8", "20")
+
+          
+          +input("password", "비밀번호*(영문+숫자, 8~20자)", "8", "20")
+
           .email-wrap
-            input(
-              type="text"
-              placeholder="이메일 앞자리*"
-            )
+            +input("text", "이메일 앞자리*", "8", "20")
             .email @
-            input(
-              type="text"
-              placeholder="이메일 뒷자리*"
-            )
+            +input("text", "이메일 뒷자리*", "8", "20")
+
           select#email-select(
           name="이메일"
           )
