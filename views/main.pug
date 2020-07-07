@@ -1,0 +1,22 @@
+doctype html
+html(lang='en')
+  head
+    title #{locals.title}
+    meta( name='viewport', content='width=device-width, initial-scale=1.0')
+    style
+      include ../styles/reset.css
+      include ../styles/main.css
+      include ../styles/components.css
+    script(type='text/javascript').
+      console.log('Hello World!')
+  body
+    #main-wrap
+      .title 사장님, 로그인해주세요!
+      input.btn-blue.submit(
+        type='submit'
+        value='배민사장님광장 로그인'
+      )
+      .options
+        div.small 아이디/비밀번호 찾기
+        div.small 회원가입
+    
