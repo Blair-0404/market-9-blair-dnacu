@@ -19,8 +19,7 @@
   "homepage": "https://github.com/woowa-techcamp-2020/market-9-blair-dnacu#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "pug": "^3.0.0",
-    "typescript": "^3.9.6"
+    "pug": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

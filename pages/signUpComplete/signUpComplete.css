@@ -1,12 +1,12 @@
 /*signUpComplete.css*/
 /*wrap*/
 #signup-complete-sction {
-  padding-top: 100px;
-  padding-left: 100px;
 }
 #signup-complete-sction #signup-complete-wrap {
-  /*border: 1px solid darkgrey;*/
   width: 400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-top: 100px;
 }
 /*top*/
 #signup-complete-sction #signup-complete-wrap .title-wrap {

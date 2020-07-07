@@ -28,25 +28,3 @@ const setUserInfo = async () => {
 };
 
 init();
-
-/**
- * @param somebody
- */
-
-// body
-//     #signup-complete-sction
-//         #signup-complete-wrap
-//             .title-wrap
-//                 img.title(
-//                     src="https://ceo.baemin.com/lockpath/images/logo-ceo.png"
-//                     alt=""
-//                 )
-//                 .suv-title 회원이 되셨습니다.
-//             .move-main-link
-//                 a(href="/") 메인으로 &rarr;
-//             .user-info-wrap
-//                 .name 이름
-//                 .id 아이디
-//                 .email 이메일
-//                 .phone 휴대폰
-//             .small-messsage 위 내용은 내 정보관리에서 수정하실 수 있습니다.
