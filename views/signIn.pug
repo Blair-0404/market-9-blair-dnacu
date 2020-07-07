@@ -1,0 +1,45 @@
+doctype html
+html(lang='en')
+  head
+    title #{locals.title}
+    meta( name='viewport', content='width=device-width, initial-scale=1.0')
+    style
+      include ../styles/reset.css
+      include ../styles/signIn.css
+      include ../styles/components.css
+    script(type='text/javascript').
+      console.log('Hello World!')
+  body
+    #signin-wrap
+      img.title(
+        src="https://ceo.baemin.com/lockpath/images/logo-ceo.png"
+        alt=""
+      )
+      form
+        input(
+        type="text"
+        placeholder="아이디 *(4~20)"
+        minlength="4"
+        maxlength="20"
+        )
+        input(
+        type="password"
+        placeholder="비밀번호*(영문+숫자, 8~20자)"
+        minlength="8"
+        maxlength="20"
+        )
+        .sinin-options
+          .save-id
+            input(
+            type="checkbox"
+            checked=false
+            )
+            div 아이디 저장
+          div.small 아이디/비밀번호 찾기
+          div.small 회원가입
+
+      input.btn-blue.submit(
+        type='submit'
+        value='로그인'
+      )
+    
