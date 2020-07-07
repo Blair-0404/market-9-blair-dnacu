@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+  head
+    title #{locals.title}
+    meta( name='viewport', content='width=device-width, initial-scale=1.0')
+    style
+      include ./notFound.css
+      include ../../styles/reset.css
+      include ../../styles/components.css
+  body
+    #not-found
+      .rain
+        div.otl
+          img(src="https://baemin.com/img/img-title-error.png" alt="")
+          p 404 NOT FOUND
+          a(href="/")
+            img(src="https://baemin.com/img/btn-home.png" alt="")
+

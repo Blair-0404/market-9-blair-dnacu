@@ -39,4 +39,12 @@ app.get("/complete", function (req, res, next) {
   res.render("signUpComplete/signUpComplete.pug", locals);
 });
 
+app.get("*", function (req, res, next) {
+  const locals = {
+    title: "Not Found",
+  };
+
+  res.render("notFound/notFound.pug", locals);
+});
+
 app.listen(8080);
