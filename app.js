@@ -30,4 +30,12 @@ app.get("/signIn", function (req, res, next) {
   res.render("SignIn", locals);
 });
 
+app.get("/complete", function (req, res, next) {
+  const locals = {
+    title: "가입완료",
+  };
+
+  res.render("signUpComplete", locals);
+});
+
 app.listen(8080);
