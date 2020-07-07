@@ -27,6 +27,7 @@ html(lang='en')
                         minlength="4"
                         maxlength="20"
                     )
+                    label.id-msg
                     //label 입력하신 아이디로 사용이 가능합니다.
                     +input("password", "password", "비밀번호*(영문+숫자, 8~20자)", "8", "20")
                     +input("password2", "password", "비밀번호 재확인", "8", "20")
@@ -123,6 +124,3 @@ html(lang='en')
                     type="submit"
                     value="가입완료"
                 )
-
-
-
