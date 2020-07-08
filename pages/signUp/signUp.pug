@@ -1,3 +1,5 @@
+// signUp.pug
+
 doctype html
 html(lang='en')
     head
@@ -7,6 +9,7 @@ html(lang='en')
             include ./signUp.css
             include ../../styles/reset.css
         script(type='module')
+            //include ./utils.js
             include ./signUp.js
     body
         #signup-wrap
@@ -20,65 +23,105 @@ html(lang='en')
                     include ../../components/input/input.pug
                     style
                         include ../../components/input/input.css
-                    //+input("id","text", "아이디 *(4~20)", "4", "20")
-                    input.id(
-                        type="text"
-                        placeholder="아이디 *(4~20)"
-                        minlength="4"
-                        maxlength="20"
-                    )
-                    label.id-msg
-                    //label 입력하신 아이디로 사용이 가능합니다.
-                    +input("password", "password", "비밀번호*(영문+숫자, 8~20자)", "8", "20")
-                    +input("password2", "password", "비밀번호 재확인", "8", "20")
-                    .email-wrap
-                        +input("email-top", "text", "이메일 앞자리*", "8", "20")
-                        .email @
-                        +input("c", "text", "이메일 뒷자리*", "8", "20")
-                    select#email-select(
-                        name="이메일"
-                    )
-                        option(
-                            value=""
-                            selected="true"
-                        ) 이메일 선택
-                        option(
-                            value="google"
-                        ) gmail.com
-                        option(
-                            value="naver"
-                        ) naver.com
-                        option(
-                            value="woowa"
-                        ) woowa.com
-                        option(
-                            value="직접입력"
-                        ) 직접입력
-                    input.name(
-                        type="text"
-                        placeholder="이름*"
-                    )
-                    label.name-msg
+                    .input-wrapper
+                        input.id(
+                            type="text"
+                            placeholder="아이디 *(4~20)"
+                            minlength="4"
+                            maxlength="20"
+                        )
+                        label.id-msg
+                    .input-wrapper
+                        input.password(
+                            type="password"
+                            placeholder="비밀번호*(영문+숫자, 8~20자)"
+                            minlength="8"
+                            maxlength="20"
+                        )
+                        label.password-msg
+                    .input-wrapper
+                        input.password2(
+                            type="password"
+                            placeholder="비밀번호 재확인*"
+                            minlength="8"
+                            maxlength="20"
+                        )
+                        label.password2-msg
+                    .input-wrapper
+                        .email-wrap
+                            input.email-top(
+                                type="text"
+                                placeholder="이메일 앞자리*"
+                                minlength="8"
+                                maxlength="20"
+                            )
+                            .email @
+                            input.email-bottom(
+                                type="text"
+                                placeholder="이메일 뒷자리*"
+                                minlength="8"
+                                maxlength="20"
+                            )
+                        label.email-msg
+                        select#email-select(
+                            name="이메일"
+                        )
+                            option(
+                                value=""
+                                selected="true"
+                            ) 이메일 선택
+                            option(
+                                value="gmail.com"
+                            ) gmail.com
+                            option(
+                                value="naver.com"
+                            ) naver.com
+                            option(
+                                value="woowahan.com"
+                            ) woowa.com
+                            option(
+                                value=""
+                            ) 직접입력
+                    .input-wrapper
+                        input.name(
+                            type="text"
+                            placeholder="이름*"
+                        )
+                        label.name-msg
                     .phone-auth-wrap
                         .phone-input
-                            +input("phone", "number", "휴대폰*")
+                            input.phone(
+                                type="phone"
+                                placeholder="휴대폰*"
+                            )
                             input.phone-auth-button(
                                 type="button"
                                 value="인증받기"
+                                disabled=true
                             )
-                            input.blue-button.hide(
+                            input.resend-button(
                                 type="button"
                                 value="재전송"
                             )
-                        .auth-input.hide
-                            +input("auth-number", "number", "인증번호 6자리 입력", "6", "6")
-                            input.blue-button.hide(
+                        label.phone-msg
+                    .auth-input
+                        .auth-input-wrapper
+                            .auth-timer-wrapper
+                                input.phone-auth-number(
+                                    type="text"
+                                    placeholder="인증번호 6자리 입력"
+                                    maxlength=6
+                                )
+                                .auth-timer
+                            input.confirm-button(
                                 type="button"
                                 value="확인"
+                                disabled=true
                             )
-                    ul
-                        li 인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.
-                        li 인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.
+                        label.phone-auth-msg
+                        ul
+                            li 인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.
+                            li 인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.
 
                 .address-wrap.section
                     .checkbox-wrap
