@@ -1,145 +1,183 @@
+// signUp.pug
+
 doctype html
 html(lang='en')
-  head
-    title #{locals.title}
-    meta( name='viewport', content='width=device-width, initial-scale=1.0')
-    style
-      include ./signUp.css
-      include ../../styles/reset.css
-    script(type='text/javascript').
-      console.log('Hello World!')
-  body
-    #signup-wrap
-      img.title(
-        src="https://ceo.baemin.com/lockpath/images/logo-ceo.png"
-        alt=""
-      )
-      form
-        .user-info-wrap.section
-          .please-info 필수 정보를 입력해주세요.
-          include ../../components/input/input.pug
-          style 
-            include ../../components/input/input.css
-
-          +input("text", "아이디 *(4~20)", "4", "20")
-
-          +input("password", "비밀번호*(영문+숫자, 8~20자)", "8", "20")
-
-          +input("password", "비밀번호 재확인", "8", "20")
-
-          +input("text", "이메일 앞자리*", "8", "20")
-
-          
-          +input("password", "비밀번호*(영문+숫자, 8~20자)", "8", "20")
-
-          .email-wrap
-            +input("text", "이메일 앞자리*", "8", "20")
-            .email @
-            +input("text", "이메일 뒷자리*", "8", "20")
-
-          select#email-select(
-          name="이메일"
-          )
-            option(
-            value=""
-            selected="true"
-            ) 이메일 선택
-            option(
-              value="google"
-            ) @gmail.com
-            option(
-              value="naver"
-            ) @naver.com
-            option(
-              value="woowa"
-            ) @woowa.com
-          input(
-            type="text"
-            placeholder="이름*"
-          )
-          .phone-auth-wrap
-            .phone-input
-              input(
-                type="number"
-                placeholder="휴대폰*"
-              )
-              input.auth-button(
-                type="button"
-                value="인증받기"
-              )
-              input.blue-button.hide(
-                type="button"
-                value="재전송"
-              )
-            .auth-input.hide
-              input(
-                type="number"
-                placeholder="인증번호 6자리 입력"
-                maxlength="6"
-              )
-              input.blue-button(
-                type="button"
-                value="확인"
-              )  
-          ul
-            li 인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.
-            li 인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.
-        
-        .address-wrap.section
-          .checkbox-wrap
-            input(
-              type="checkbox"
-              checked=false
+    head
+        title #{locals.title}
+        meta( name='viewport', content='width=device-width, initial-scale=1.0')
+        style
+            include ./signUp.css
+            include ../../styles/reset.css
+        script(type='module')
+            include ./utils.js
+            include ./signUp.js
+        script(
+            src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
+        )
+    body
+        #signup-wrap
+            img.title(
+                src="https://ceo.baemin.com/lockpath/images/logo-ceo.png"
+                alt=""
             )
-            div 선택 정보를 입력하시겠어요?
-            div.underline.small-font 내용보기
-          .postal-code-wrap
-            input(
-              type="text"
-              placeholder="우편번호"
-            )
-            input(
-              type="button"
-              value="주소찾기"
-            )
-          input(
-            type="text"
-            placeholder="주소"
-          )
-          input(
-            type="text"
-            placeholder="상세 주소"
-          )
-        
-        .agree-wrap
-          .checkbox-wrap
-            input(
-              type="checkbox"
-              checked=false
-            )
-            div 전체 약관에 동의합니다
-          .checkbox-wrap
-            input(
-              type="checkbox"
-              checked=false
-            )
-            
-            div 필수 항목에 동의합니다.
-              .agree-underline-section
-                .underline 배민사장님광장 이용약관
-                .underline 개인정보 수집이용 동의
-          .checkbox-wrap
-            input(
-              type="checkbox"
-              checked=false
-            )
-            div 광고성 정보 수신 동의 (선택)
-          .age-cutline.small-font 만 14세 이상 회원만 가입 가능합니다. 
-            .underline 내용보기
-        input.finish-button(
-          type="submit"
-          value="가입완료"
-        )        
+            form
+                .user-info-wrap.section
+                    .please-info 필수 정보를 입력해주세요.
+                    include ../../components/input/input.pug
+                    style
+                        include ../../components/input/input.css
+                    .input-wrapper
+                        input.id(
+                            type="text"
+                            placeholder="아이디 *(4~20)"
+                            minlength="4"
+                            maxlength="20"
+                        )
+                        label.id-msg
+                    .input-wrapper
+                        input.password(
+                            type="password"
+                            placeholder="비밀번호*(영문+숫자, 8~20자)"
+                            minlength="8"
+                            maxlength="20"
+                        )
+                        label.password-msg
+                    .input-wrapper
+                        input.password2(
+                            type="password"
+                            placeholder="비밀번호 재확인*"
+                            minlength="8"
+                            maxlength="20"
+                        )
+                        label.password2-msg
+                    .input-wrapper
+                        .email-wrap
+                            input.email-top(
+                                type="text"
+                                placeholder="이메일 앞자리*"
+                                minlength="8"
+                                maxlength="20"
+                            )
+                            .email @
+                            input.email-bottom(
+                                type="text"
+                                placeholder="이메일 뒷자리*"
+                                minlength="8"
+                                maxlength="20"
+                            )
+                        label.email-msg
+                        select#email-select(
+                            name="이메일"
+                        )
+                            option(
+                                value=""
+                                selected="true"
+                            ) 이메일 선택
+                            option(
+                                value="gmail.com"
+                            ) gmail.com
+                            option(
+                                value="naver.com"
+                            ) naver.com
+                            option(
+                                value="woowahan.com"
+                            ) woowa.com
+                            option(
+                                value=""
+                            ) 직접입력
+                    .input-wrapper
+                        input.name(
+                            type="text"
+                            placeholder="이름*"
+                        )
+                        label.name-msg
+                    .phone-auth-wrap
+                        .phone-input
+                            input.phone(
+                                type="phone"
+                                placeholder="휴대폰*"
+                            )
+                            input.phone-auth-button(
+                                type="button"
+                                value="인증받기"
+                                disabled=true
+                            )
+                            input.resend-button(
+                                type="button"
+                                value="재전송"
+                            )
+                        label.phone-msg
+                    .auth-input
+                        .auth-input-wrapper
+                            .auth-timer-wrapper
+                                input.phone-auth-number(
+                                    type="text"
+                                    placeholder="인증번호 6자리 입력"
+                                    maxlength=6
+                                )
+                                .auth-timer
+                            input.confirm-button(
+                                type="button"
+                                value="확인"
+                                disabled=true
+                            )
+                        label.phone-auth-msg
+                        ul
+                            li 인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.
+                            li 인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.
 
+                .address-wrap.section
+                    .checkbox-wrap
+                        input.check-select-info(
+                            type="checkbox"
+                            checked=false
+                        )
+                        div 선택 정보를 입력하시겠어요?
+                        div.underline.small-font 내용보기
+                    .postal-code-wrap
+                        .search-postal-code
+                            input.zip-code.address-input(
+                                type="text"
+                                placeholder="우편번호"
+                                readonly
+                            )
+                            input.blue-button.address-search-btn(
+                                type="button"
+                                value="주소찾기"
+                            )
+                        input.address-text.address-input(
+                            type="text"
+                            placeholder="주소"
+                            readonly
+                        )
+                        input.address-detail-text.address-input(
+                            type="text"
+                            placeholder="상세주소"
+                            readonly
+                        )
+                .agree-wrap
+                    .checkbox-wrap
+                        input.check-all-term(
+                            type="checkbox"
+                        )
+                        div 전체 약관에 동의합니다
+                    .checkbox-wrap
+                        input.check-list.check-necessary-list(
+                            type="checkbox"
+                        )
 
-
+                        div 필수 항목에 동의합니다.
+                            .agree-underline-section
+                                .underline 배민사장님광장 이용약관
+                                .underline 개인정보 수집이용 동의
+                    .checkbox-wrap
+                        input.check-list.check-ad-agree(
+                            type="checkbox"
+                        )
+                        div 광고성 정보 수신 동의 (선택)
+                    .age-cutline.small-font 만 14세 이상 회원만 가입 가능합니다.
+                        .underline 내용보기
+                input.finish-button(
+                    type="submit"
+                    value="가입완료"
+                )
