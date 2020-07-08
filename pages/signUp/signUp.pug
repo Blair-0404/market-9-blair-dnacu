@@ -11,6 +11,9 @@ html(lang='en')
         script(type='module')
             include ./utils.js
             include ./signUp.js
+        script(
+            src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
+        )
     body
         #signup-wrap
             img.title(
@@ -133,26 +136,47 @@ html(lang='en')
                         div.underline.small-font 내용보기
                     .postal-code-wrap
                         .search-postal-code
-                            input.address-input(
+                            input.zip-code(
                                 type="text"
                                 placeholder="우편번호"
                                 readonly
                             )
-                            input.address-search-button(
+                            input.blue-button.address-search-btn(
                                 type="button"
                                 value="주소찾기"
-                                disabled
                             )
-                        input.address-input(
+                        input.address-text(
                             type="text"
                             placeholder="주소"
                             readonly
                         )
-                        input.address-input(
+                        input.address-detail-text(
                             type="text"
                             placeholder="상세주소"
                             readonly
                         )
+                    //.postal-code-wrap
+                    //    .search-postal-code
+                    //        input.address-input(
+                    //            type="text"
+                    //            placeholder="우편번호"
+                    //            readonly
+                    //        )
+                    //        input.address-search-button(
+                    //            type="button"
+                    //            value="주소찾기"
+                    //            disabled
+                    //        )
+                    //    input.address-input(
+                    //        type="text"
+                    //        placeholder="주소"
+                    //        readonly
+                    //    )
+                    //    input.address-input(
+                    //        type="text"
+                    //        placeholder="상세주소"
+                    //        readonly
+                    //    )
                 .agree-wrap
                     .checkbox-wrap.check-all
                         input(

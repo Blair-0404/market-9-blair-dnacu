@@ -14,9 +14,9 @@ const signUpSelectors = {
     phoneAuthConfirmBtn: document.querySelector('.confirm-button'),
     checkSelectInfo: document.querySelector('.check-select-info'),
     addressInput: document.querySelectorAll('.address-input'),
-    addressSearchButton: document.querySelector('.address-search-button'),
+    addressSearchBtn: document.querySelector('.address-search-btn'),
     checkAll: document.querySelector('.check-all'),
-    checkPartials: document.querySelectorAll('.check-partial')
+    checkPartials: document.querySelectorAll('.check-partial'),
 };
 
 const VALIDATION_MESSAGES = {
@@ -117,6 +117,10 @@ signUpSelectors.phoneAuthConfirmBtn.addEventListener('click', (e) => {
     signUpSelectors.phoneAuthConfirmBtn.disabled = true;
 })
 
+signUpSelectors.addressSearchBtn.addEventListener('click', () => {
+    execDaumPostcode()
+})
+
 // 주소 옵션박스 체크시 입력가능
 signUpSelectors.checkSelectInfo.addEventListener('click', (e) => {
     // e.preventDefault()
@@ -127,18 +131,20 @@ function isSelectedAddressCheckbox() {
         signUpSelectors.addressInput.forEach((val) => {
             val.removeAttribute('readonly')
         })
-        signUpSelectors.addressSearchButton.removeAttribute('disabled')
+        signUpSelectors.addressSearchBtn.removeAttribute('disabled')
     } else {
         signUpSelectors.addressInput.forEach((val) => {
             val.setAttribute('readonly', '')
         })
-        signUpSelectors.addressSearchButton.setAttribute('disabled', '')
+        signUpSelectors.addressSearchBtn.setAttribute('disabled', '')
     }
 }
 
-signUpSelectors.checkPartials.addEventListener('click', (e) => {
-    console.log([...signUpSelectors.checkPartials])
-})
+// signUpSelectors.checkPartials.addEventListener('click', (e) => {
+//     console.log([...signUpSelectors.checkPartials])
+// })
+
+
 
 function setTimers() {
     let time = 2 * 60 * 1000;
@@ -282,17 +288,14 @@ function isValidPhoneAuthNumber() {
     }
 }
 
-// 주소 옵션박스 체크시 입력가능
-// function isSelectedAddressCheckbox() {
-//     if(signUpSelectors.checkSelectInfo.checked === true) {
-//         signUpSelectors.addressInput.forEach((val) => {
-//             val.removeAttribute('readonly')
-//         })
-//         signUpSelectors.addressSearchButton.removeAttribute('disabled')
-//     } else {
-//         signUpSelectors.addressInput.forEach((val) => {
-//             val.setAttribute('readonly', '')
-//         })
-//         signUpSelectors.addressSearchButton.setAttribute('disabled', '')
-//     }
-// }
+function execDaumPostcode() {
+    const zipCodeInput = document.querySelector('.zip-code');
+    const roadAddress = document.querySelector('.address-text');
+    new daum.Postcode({
+        oncomplete: function (data) {
+            zipCodeInput.value = data.zonecode;
+            roadAddress.value = data.roadAddress;
+            console.log(data);
+        },
+    }).open();
+}
