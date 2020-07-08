@@ -1,14 +1,7 @@
+import { httpRequest } from "/js//httpRequest.js";
+
 const signInWrap = document.querySelector("#signin-wrap");
 const passwordReg = new RegExp("^[a-zA-Z0-9]{8,20}$", "gm");
-
-const signIn = (id, password) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (id === "winteri1276" && password === "woowacamp123") resolve(true);
-      else resolve(false);
-    }, 500);
-  });
-};
 
 const showErrorMessage = (message) => {
   const errMsg = signInWrap.querySelector("form .err");
@@ -34,9 +27,9 @@ const signInHandler = (e) => {
   )
     showErrorMessage("비밀번호를 확인해주세요.");
   else {
-    signIn(id, password).then((res) => {
+    httpRequest.post("/signIn", { id, password }).then(({ signInSuccess }) => {
       // 로그인 성공!
-      if (res) {
+      if (signInSuccess) {
         alert("로그인 성공!");
 
         // 아이디 저장을 위해 localStorage에 저장
