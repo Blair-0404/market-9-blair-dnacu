@@ -21,7 +21,6 @@ const signUpSelectors = {
     checkAllTerm: document.querySelector('.check-all-term'),
     checkNecessaryList: document.querySelector('.check-necessary-list'),
     checkAdAgree: document.querySelector('.check-ad-agree'),
-    // checkList: document.querySelectorAll('.check-list')
 };
 
 const VALIDATION_MESSAGES = {
