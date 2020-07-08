@@ -3,15 +3,6 @@ import { httpRequest } from "/js//httpRequest.js";
 const signInWrap = document.querySelector("#signin-wrap");
 const passwordReg = new RegExp("^[a-zA-Z0-9]{8,20}$", "gm");
 
-const signIn = (id, password) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (id === "winteri1276" && password === "woowacamp123") resolve(true);
-      else resolve(false);
-    }, 500);
-  });
-};
-
 const showErrorMessage = (message) => {
   const errMsg = signInWrap.querySelector("form .err");
 
