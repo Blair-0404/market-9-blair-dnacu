@@ -136,7 +136,7 @@ html(lang='en')
                         div.underline.small-font 내용보기
                     .postal-code-wrap
                         .search-postal-code
-                            input.zip-code(
+                            input.zip-code.address-input(
                                 type="text"
                                 placeholder="우편번호"
                                 readonly
@@ -145,59 +145,34 @@ html(lang='en')
                                 type="button"
                                 value="주소찾기"
                             )
-                        input.address-text(
+                        input.address-text.address-input(
                             type="text"
                             placeholder="주소"
                             readonly
                         )
-                        input.address-detail-text(
+                        input.address-detail-text.address-input(
                             type="text"
                             placeholder="상세주소"
                             readonly
                         )
-                    //.postal-code-wrap
-                    //    .search-postal-code
-                    //        input.address-input(
-                    //            type="text"
-                    //            placeholder="우편번호"
-                    //            readonly
-                    //        )
-                    //        input.address-search-button(
-                    //            type="button"
-                    //            value="주소찾기"
-                    //            disabled
-                    //        )
-                    //    input.address-input(
-                    //        type="text"
-                    //        placeholder="주소"
-                    //        readonly
-                    //    )
-                    //    input.address-input(
-                    //        type="text"
-                    //        placeholder="상세주소"
-                    //        readonly
-                    //    )
                 .agree-wrap
-                    .checkbox-wrap.check-all
-                        input(
+                    .checkbox-wrap
+                        input.check-all-term(
                             type="checkbox"
-                            checked=false
                         )
                         div 전체 약관에 동의합니다
-                    .checkbox-wrap.check-partial
-                        input(
+                    .checkbox-wrap
+                        input.check-list.check-necessary-list(
                             type="checkbox"
-                            checked=false
                         )
 
                         div 필수 항목에 동의합니다.
                             .agree-underline-section
                                 .underline 배민사장님광장 이용약관
                                 .underline 개인정보 수집이용 동의
-                    .checkbox-wrap.check-partial
-                        input(
+                    .checkbox-wrap
+                        input.check-list.check-ad-agree(
                             type="checkbox"
-                            checked=false
                         )
                         div 광고성 정보 수신 동의 (선택)
                     .age-cutline.small-font 만 14세 이상 회원만 가입 가능합니다.

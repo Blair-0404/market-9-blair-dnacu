@@ -7,16 +7,21 @@ const signUpSelectors = {
     emailBottom: document.querySelector('.email-bottom'),
     emailSelect: document.querySelector('#email-select'),
     name: document.querySelector('.name'),
+
     phone: document.querySelector('.phone'),
     phoneAuthBtn: document.querySelector('.phone-auth-button'),
     phoneResendBtn: document.querySelector('.resend-button'),
     phoneAuthInput: document.querySelector('.phone-auth-number'),
     phoneAuthConfirmBtn: document.querySelector('.confirm-button'),
     checkSelectInfo: document.querySelector('.check-select-info'),
+    zipCode: document.querySelectorAll('.zip-code'),
     addressInput: document.querySelectorAll('.address-input'),
     addressSearchBtn: document.querySelector('.address-search-btn'),
-    checkAll: document.querySelector('.check-all'),
-    checkPartials: document.querySelectorAll('.check-partial'),
+
+    checkAllTerm: document.querySelector('.check-all-term'),
+    checkNecessaryList: document.querySelector('.check-necessary-list'),
+    checkAdAgree: document.querySelector('.check-ad-agree'),
+    // checkList: document.querySelectorAll('.check-list')
 };
 
 const VALIDATION_MESSAGES = {
@@ -117,34 +122,30 @@ signUpSelectors.phoneAuthConfirmBtn.addEventListener('click', (e) => {
     signUpSelectors.phoneAuthConfirmBtn.disabled = true;
 })
 
+// 주소 옵션박스 체크시 주소창 열림
+signUpSelectors.checkSelectInfo.addEventListener('click', (e) => {
+    isSelectedAddressCheckbox()
+})
+
 signUpSelectors.addressSearchBtn.addEventListener('click', () => {
     execDaumPostcode()
 })
 
-// 주소 옵션박스 체크시 입력가능
-signUpSelectors.checkSelectInfo.addEventListener('click', (e) => {
-    // e.preventDefault()
-    isSelectedAddressCheckbox()
+
+// 동의 체크박스 클릭시 다른 항목들 자동체크
+signUpSelectors.checkAllTerm.addEventListener('click', (e) => {
+    checkAllAgreeList();
 })
-function isSelectedAddressCheckbox() {
-    if(signUpSelectors.checkSelectInfo.checked === true) {
-        signUpSelectors.addressInput.forEach((val) => {
-            val.removeAttribute('readonly')
-        })
-        signUpSelectors.addressSearchBtn.removeAttribute('disabled')
-    } else {
-        signUpSelectors.addressInput.forEach((val) => {
-            val.setAttribute('readonly', '')
-        })
-        signUpSelectors.addressSearchBtn.setAttribute('disabled', '')
-    }
-}
 
-// signUpSelectors.checkPartials.addEventListener('click', (e) => {
-//     console.log([...signUpSelectors.checkPartials])
-// })
+// 둘중 한개 클릭시 전체 동의 체크
+signUpSelectors.checkNecessaryList.addEventListener('click', (e) => {
+    checkControlOtherList()
+})
 
-
+// 둘중 한개 클릭시 전체 동의 체크
+signUpSelectors.checkAdAgree.addEventListener('click', (e) => {
+    checkControlOtherList()
+})
 
 function setTimers() {
     let time = 2 * 60 * 1000;
@@ -288,6 +289,22 @@ function isValidPhoneAuthNumber() {
     }
 }
 
+// 주소 옵션박스 체크시 주소창 열림 cb
+function isSelectedAddressCheckbox() {
+    if(signUpSelectors.checkSelectInfo.checked === true) {
+        signUpSelectors.addressInput.forEach((val) => {
+            val.removeAttribute('readonly')
+        })
+        signUpSelectors.addressSearchBtn.removeAttribute('disabled')
+    } else {
+        signUpSelectors.addressInput.forEach((val) => {
+            val.setAttribute('readonly', '')
+        })
+        signUpSelectors.addressSearchBtn.setAttribute('disabled', '')
+    }
+}
+
+// 검색주소 결과 input-value에 가져오기 cb
 function execDaumPostcode() {
     const zipCodeInput = document.querySelector('.zip-code');
     const roadAddress = document.querySelector('.address-text');
@@ -298,4 +315,20 @@ function execDaumPostcode() {
             console.log(data);
         },
     }).open();
+}
+
+// 동의 체크박스 로직구현 cb
+function checkAllAgreeList (){
+    if(signUpSelectors.checkAllTerm.checked) {
+        signUpSelectors.checkNecessaryList.checked = true;
+        signUpSelectors.checkAdAgree.checked = true;
+    } else {
+        signUpSelectors.checkNecessaryList.checked = false;
+        signUpSelectors.checkAdAgree.checked = false;
+    }
+}
+
+// 둘중 한개 클릭시 전체 동의 체크 cb
+function checkControlOtherList() {
+    signUpSelectors.checkAllTerm.checked = signUpSelectors.checkNecessaryList.checked && signUpSelectors.checkAdAgree.checked;
 }
