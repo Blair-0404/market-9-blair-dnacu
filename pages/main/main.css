@@ -22,6 +22,15 @@
   color: darkgray;
   font-weight: 500;
   margin-left: 16px;
+
+  cursor: not-allowed;
+}
+
+#main-wrap .options .small a {
+  color: darkgray;
+  text-decoration: none;
+
+  cursor: pointer;
 }
 
 #main-wrap .options .small:first-child {
@@ -43,4 +52,6 @@
   margin: 20px 0 8px 0;
   height: 70px;
   font-weight: 500;
+
+  cursor: pointer;
 }

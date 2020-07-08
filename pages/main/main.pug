@@ -7,16 +7,16 @@ html(lang='en')
       include ./main.css
       include ../../styles/reset.css
       include ../../styles/components.css
-    script(type='text/javascript').
-      console.log('Hello World!')
   body
     #main-wrap
       .title 사장님, 로그인해주세요!
-      input.btn-blue.submit(
-        type='submit'
-        value='배민사장님광장 로그인'
-      )
+      a(href="/signIn")
+        input.btn-blue.submit(
+          type='submit'
+          value='배민사장님광장 로그인'
+        )
       .options
         div.small 아이디/비밀번호 찾기
-        div.small 회원가입
+        div.small 
+          a(href="/signUp") 회원가입
     

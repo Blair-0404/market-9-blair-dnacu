@@ -1,6 +1,7 @@
 #signin-wrap {
   width: 380px;
   margin: 0 auto;
+  margin-top: 100px;
 
   display: flex;
   flex-direction: column;
@@ -43,6 +44,8 @@
   height: 20px;
   margin: 0px;
   margin-right: 8px;
+
+  cursor: pointer;
 }
 
 #signin-wrap .sinin-options .save-id > div {
@@ -53,13 +56,28 @@
   font-size: 0.9rem;
   color: darkgray;
   font-weight: 600;
+
+  cursor: not-allowed;
 }
 
 #signin-wrap .submit {
   margin-top: 30px;
   margin-bottom: 0;
-  margin: 20px 0 8px 0;
-  height: 70px;
+  margin: 30px 0 8px 0;
+  height: 63px;
   font-weight: 500;
   font-size: 1.2rem;
+  border: none;
+
+  cursor: pointer;
+}
+
+#signin-wrap .err {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #f45452;
+  display: none;
+}
+#signin-wrap .err.on {
+  display: block;
 }

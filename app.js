@@ -1,6 +1,9 @@
 const express = require("express");
+const favicon = require("serve-favicon");
+const path = require("path");
 
 const app = express();
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
 // Express view engine 을 pug 로 설정
 app.set("view engine", "pug");
@@ -37,6 +40,14 @@ app.get("/complete", function (req, res, next) {
   };
 
   res.render("signUpComplete/signUpComplete.pug", locals);
+});
+
+app.get("*", function (req, res, next) {
+  const locals = {
+    title: "Not Found",
+  };
+
+  res.render("notFound/notFound.pug", locals);
 });
 
 app.listen(8080);
