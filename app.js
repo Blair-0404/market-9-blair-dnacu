@@ -1,53 +1,28 @@
+const path = require("path");
 const express = require("express");
 const favicon = require("serve-favicon");
-const path = require("path");
+const cookieParser = require("cookie-parser");
+
+// import routers...
+const routers = require("./routes");
 
 const app = express();
+
+// use favicon
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
 // Express view engine 을 pug 로 설정
-app.set("view engine", "pug");
 // root directory 설정 (app.views의 값을 변경한다.)
+app.set("view engine", "pug");
 app.set("views", __dirname + "/pages");
 
-app.get("/", function (req, res, next) {
-  const locals = {
-    title: "배민상회",
-  };
+app.use(cookieParser());
 
-  res.render("main/main.pug", locals);
-});
-
-app.get("/signUp", function (req, res, next) {
-  const locals = {
-    title: "회원가입",
-  };
-
-  res.render("signUp/signUp.pug", locals);
-});
-
-app.get("/signIn", function (req, res, next) {
-  const locals = {
-    title: "로그인",
-  };
-
-  res.render("signIn/signIn.pug", locals);
-});
-
-app.get("/complete", function (req, res, next) {
-  const locals = {
-    title: "가입완료",
-  };
-
-  res.render("signUpComplete/signUpComplete.pug", locals);
-});
-
-app.get("*", function (req, res, next) {
-  const locals = {
-    title: "Not Found",
-  };
-
-  res.render("notFound/notFound.pug", locals);
-});
+// routing
+app.use("/", routers.mainRouter);
+app.use("/signUp", routers.signUpRouter);
+app.use("/signIn", routers.signInRouter);
+app.use("/complete", routers.completeRouter);
+app.use("*", routers.notFoundRouter);
 
 app.listen(8080);
