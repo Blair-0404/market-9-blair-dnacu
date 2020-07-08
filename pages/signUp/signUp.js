@@ -12,7 +12,9 @@ const signUpSelectors = {
     phoneResendBtn: document.querySelector('.resend-button'),
     phoneAuthInput: document.querySelector('.phone-auth-number'),
     phoneAuthConfirmBtn: document.querySelector('.confirm-button'),
-    checkSelectInfo: document.querySelector('.check-select-info')
+    checkSelectInfo: document.querySelector('.check-select-info'),
+    addressInput: document.querySelectorAll('.address-input'),
+    addressSearchButton: document.querySelector('.address-search-button')
 };
 
 const VALIDATION_MESSAGES = {
@@ -37,6 +39,7 @@ const VALIDATION_LENGTHS = {
 signUpSelectors.id.addEventListener('focusout', (e) => {
     e.preventDefault();
     isValidatedId();
+    console.log("test")
 })
 
 signUpSelectors.name.addEventListener('focusout', (e) => {
@@ -110,6 +113,11 @@ signUpSelectors.phoneAuthConfirmBtn.addEventListener('click', (e) => {
     signUpSelectors.phoneResendBtn.disabled = true;
     signUpSelectors.phoneAuthInput.disabled = true;
     signUpSelectors.phoneAuthConfirmBtn.disabled = true;
+})
+// 주소 옵션박스 체크시 입력가능
+signUpSelectors.checkSelectInfo.addEventListener('click', (e) => {
+    // e.preventDefault()
+    isSelectedAddressCheckbox()
 })
 
 function setTimers() {
@@ -251,5 +259,20 @@ function isValidPhoneAuthNumber() {
         signUpSelectors.phoneAuthConfirmBtn.disabled = false;
         phoneAuthInput.classList.remove("invalid");
         label.textContent = VALIDATION_MESSAGES.INITIALIZER;
+    }
+}
+
+// 주소 옵션박스 체크시 입력가능
+function isSelectedAddressCheckbox() {
+    if(signUpSelectors.checkSelectInfo.checked === true) {
+        signUpSelectors.addressInput.forEach((val) => {
+            val.removeAttribute('readonly')
+        })
+        signUpSelectors.addressSearchButton.removeAttribute('disabled')
+    } else {
+        signUpSelectors.addressInput.forEach((val) => {
+            val.setAttribute('readonly', '')
+        })
+        signUpSelectors.addressSearchButton.setAttribute('disabled', '')
     }
 }

@@ -9,7 +9,6 @@ html(lang='en')
             include ./signUp.css
             include ../../styles/reset.css
         script(type='module')
-            //include ./utils.js
             include ./signUp.js
     body
         #signup-wrap
@@ -133,23 +132,34 @@ html(lang='en')
                         div.underline.small-font 내용보기
                     .postal-code-wrap
                         .search-postal-code
-                            +input("address-number", "text", "우편번호")
-                            input.blue-button(
+                            input.address-input(
+                                type="text"
+                                placeholder="우편번호"
+                                readonly
+                            )
+                            input.address-search-button(
                                 type="button"
                                 value="주소찾기"
+                                disabled=true
                             )
-                        +input("address-text", "text", "주소")
-                        +input("address-detail-text", "text", "상세주소")
-
-
+                        input.address-input(
+                            type="text"
+                            placeholder="주소"
+                            readonly
+                        )
+                        input.address-input(
+                            type="text"
+                            placeholder="상세주소"
+                            readonly
+                        )
                 .agree-wrap
-                    .checkbox-wrap
+                    .checkbox-wrap.check-all
                         input(
                             type="checkbox"
                             checked=false
                         )
                         div 전체 약관에 동의합니다
-                    .checkbox-wrap
+                    .checkbox-wrap.check-partial
                         input(
                             type="checkbox"
                             checked=false
@@ -159,7 +169,7 @@ html(lang='en')
                             .agree-underline-section
                                 .underline 배민사장님광장 이용약관
                                 .underline 개인정보 수집이용 동의
-                    .checkbox-wrap
+                    .checkbox-wrap.check-partial
                         input(
                             type="checkbox"
                             checked=false
