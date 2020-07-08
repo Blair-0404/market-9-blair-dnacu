@@ -9,4 +9,14 @@ router.get("/", function (req, res, next) {
 
   res.render("signIn/signIn.pug", locals);
 });
+
+/* POST signIn page. */
+router.post("/", function (req, res, next) {
+  console.log(req.body);
+
+  // res.sendStatus(200);
+  res.json({ signInSuccess: true });
+  // res.sendStatus(404);
+});
+
 module.exports = router;
