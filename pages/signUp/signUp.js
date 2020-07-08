@@ -14,7 +14,9 @@ const signUpSelectors = {
     phoneAuthConfirmBtn: document.querySelector('.confirm-button'),
     checkSelectInfo: document.querySelector('.check-select-info'),
     addressInput: document.querySelectorAll('.address-input'),
-    addressSearchButton: document.querySelector('.address-search-button')
+    addressSearchButton: document.querySelector('.address-search-button'),
+    checkAll: document.querySelector('.check-all'),
+    checkPartials: document.querySelectorAll('.check-partial')
 };
 
 const VALIDATION_MESSAGES = {
@@ -114,10 +116,28 @@ signUpSelectors.phoneAuthConfirmBtn.addEventListener('click', (e) => {
     signUpSelectors.phoneAuthInput.disabled = true;
     signUpSelectors.phoneAuthConfirmBtn.disabled = true;
 })
+
 // 주소 옵션박스 체크시 입력가능
 signUpSelectors.checkSelectInfo.addEventListener('click', (e) => {
     // e.preventDefault()
     isSelectedAddressCheckbox()
+})
+function isSelectedAddressCheckbox() {
+    if(signUpSelectors.checkSelectInfo.checked === true) {
+        signUpSelectors.addressInput.forEach((val) => {
+            val.removeAttribute('readonly')
+        })
+        signUpSelectors.addressSearchButton.removeAttribute('disabled')
+    } else {
+        signUpSelectors.addressInput.forEach((val) => {
+            val.setAttribute('readonly', '')
+        })
+        signUpSelectors.addressSearchButton.setAttribute('disabled', '')
+    }
+}
+
+signUpSelectors.checkPartials.addEventListener('click', (e) => {
+    console.log([...signUpSelectors.checkPartials])
 })
 
 function setTimers() {
@@ -263,16 +283,16 @@ function isValidPhoneAuthNumber() {
 }
 
 // 주소 옵션박스 체크시 입력가능
-function isSelectedAddressCheckbox() {
-    if(signUpSelectors.checkSelectInfo.checked === true) {
-        signUpSelectors.addressInput.forEach((val) => {
-            val.removeAttribute('readonly')
-        })
-        signUpSelectors.addressSearchButton.removeAttribute('disabled')
-    } else {
-        signUpSelectors.addressInput.forEach((val) => {
-            val.setAttribute('readonly', '')
-        })
-        signUpSelectors.addressSearchButton.setAttribute('disabled', '')
-    }
-}
+// function isSelectedAddressCheckbox() {
+//     if(signUpSelectors.checkSelectInfo.checked === true) {
+//         signUpSelectors.addressInput.forEach((val) => {
+//             val.removeAttribute('readonly')
+//         })
+//         signUpSelectors.addressSearchButton.removeAttribute('disabled')
+//     } else {
+//         signUpSelectors.addressInput.forEach((val) => {
+//             val.setAttribute('readonly', '')
+//         })
+//         signUpSelectors.addressSearchButton.setAttribute('disabled', '')
+//     }
+// }

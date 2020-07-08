@@ -9,6 +9,7 @@ html(lang='en')
             include ./signUp.css
             include ../../styles/reset.css
         script(type='module')
+            include ./utils.js
             include ./signUp.js
     body
         #signup-wrap
@@ -140,7 +141,7 @@ html(lang='en')
                             input.address-search-button(
                                 type="button"
                                 value="주소찾기"
-                                disabled=true
+                                disabled
                             )
                         input.address-input(
                             type="text"
