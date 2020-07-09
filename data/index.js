@@ -50,8 +50,6 @@ const userListDB = {
     isDuplicatedId,
 };
 
-userListDB.addUser()
-
 module.exports = userListDB;
 
 // userListDB.isDuplicatedId("dnacu").then(console.log);

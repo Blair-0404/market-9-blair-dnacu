@@ -47,7 +47,6 @@ const VALIDATION_LENGTHS = {
 signUpSelectors.id.addEventListener('focusout', (e) => {
     e.preventDefault();
     isValidatedId();
-    console.log("test")
 })
 
 signUpSelectors.name.addEventListener('focusout', (e) => {
@@ -86,7 +85,6 @@ signUpSelectors.emailSelect.addEventListener('change', (e) => {
 signUpSelectors.phone.addEventListener('focusout', (e) => {
     e.preventDefault();
     isValidPhoneNumber();
-    console.log('d');
 })
 
 signUpSelectors.phoneAuthBtn.addEventListener('click', (e) => {
@@ -165,6 +163,9 @@ signUpSelectors.form.addEventListener('submit', (e) => {
 
 
     httpRequest.post('/signup', userObj).then((res) => {
+        if(res.signUpSuccess) {
+            window.location.href = `/complete?id=${userObj.id}&name=${userObj.name}&email=${userObj.email}&phone=${userObj.phone}`;
+        }
         // todo: 여기서 이제 complete페이지로 리다이렉트 시키기.
     })
 })
@@ -334,7 +335,6 @@ function execDaumPostcode() {
         oncomplete: function (data) {
             zipCodeInput.value = data.zonecode;
             roadAddress.value = data.roadAddress;
-            console.log(data);
         },
     }).open();
 }

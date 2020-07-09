@@ -31,6 +31,8 @@ html(lang='en')
                             placeholder="아이디 *(4~20)"
                             minlength="4"
                             maxlength="20"
+                            required=true
+
                         )
                         label.id-msg
                     .input-wrapper
@@ -39,6 +41,7 @@ html(lang='en')
                             placeholder="비밀번호*(영문+숫자, 8~20자)"
                             minlength="8"
                             maxlength="20"
+                            required=true
                         )
                         label.password-msg
                     .input-wrapper
@@ -47,6 +50,8 @@ html(lang='en')
                             placeholder="비밀번호 재확인*"
                             minlength="8"
                             maxlength="20"
+                            required=true
+
                         )
                         label.password2-msg
                     .input-wrapper
@@ -88,6 +93,8 @@ html(lang='en')
                         input.name(
                             type="text"
                             placeholder="이름*"
+                            required=true
+
                         )
                         label.name-msg
                     .phone-auth-wrap
@@ -95,6 +102,7 @@ html(lang='en')
                             input.phone(
                                 type="phone"
                                 placeholder="휴대폰*"
+                                required=true
                             )
                             input.phone-auth-button(
                                 type="button"

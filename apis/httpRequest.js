@@ -11,7 +11,7 @@ const xhttp = new XMLHttpRequest();
 const requestGenerator = (method, url, params) => {
   return new Promise((resolve, reject) => {
     // 3번째 인자는 true: 비동기, false: 동기 를 결정한다.
-    xhttp.open(method, url, false);
+    xhttp.open(method, url, true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     xhttp.onreadystatechange = () => {
