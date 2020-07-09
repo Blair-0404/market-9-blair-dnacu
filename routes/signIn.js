@@ -14,7 +14,6 @@ router.get("/", function (req, res, next) {
 
 /* POST signIn page. */
 router.post("/", function (req, res, next) {
-  console.log(req.body);
   const { id, password } = req.body;
   if (!id || !password) {
     res.sendStatus(400);
