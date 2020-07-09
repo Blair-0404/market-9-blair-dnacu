@@ -1,4 +1,4 @@
-import { httpRequest } from "/js//httpRequest.js";
+import { httpRequest } from "/js/httpRequest.js";
 
 const signInWrap = document.querySelector("#signin-wrap");
 const passwordReg = new RegExp("^[a-zA-Z0-9]{8,20}$", "gm");
