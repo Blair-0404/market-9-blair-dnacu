@@ -38,7 +38,7 @@ const getUserInfo = (id) =>
  */
 const addUser = (userInfo) =>
   new Promise((resolve, reject) => {
-    userList.findOne({ id }, (err, docs) => {
+    userList.insert(userInfo, (err, docs) => {
       if (err) reject(err);
       else resolve(true);
     });
@@ -50,5 +50,4 @@ const userListDB = {
   isDuplicatedId,
 };
 
-userListDB.isDuplicatedId("dnacu").then(console.log);
-userListDB.getUserInfo("dnacu").then(console.log);
+module.exports = { userListDB };

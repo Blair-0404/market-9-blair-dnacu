@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const { userListDB } = require("../data");
+
 /* GET signIn page. */
 router.get("/", function (req, res, next) {
   const locals = {
@@ -13,10 +15,16 @@ router.get("/", function (req, res, next) {
 /* POST signIn page. */
 router.post("/", function (req, res, next) {
   console.log(req.body);
+  const { id, password } = req.body;
+  if (!id || !password) {
+    res.sendStatus(400);
+  }
 
-  // res.sendStatus(200);
-  res.json({ signInSuccess: true });
-  // res.sendStatus(404);
+  userListDB.getUserInfo(id).then((data) => {
+    if (!data) res.sendStatus(400);
+
+    res.json({ signInSuccess: data.password === password });
+  });
 });
 
 module.exports = router;
