@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
 const repository = require("../data/index.js");
 
@@ -17,12 +18,20 @@ router.post("/", function (req, res, next) {
   const { id, password } = req.body;
   if (!id || !password) {
     res.sendStatus(400);
+    return;
   }
 
   repository.getUserInfo(id).then((data) => {
-    if (!data) res.sendStatus(400);
+    if (!data) {
+      res.sendStatus(400);
+      return;
+    }
 
-    res.json({ signInSuccess: data.password === password });
+    bcrypt.compare(password, data.password, function (err, result) {
+      if (err) throw err;
+
+      res.json({ signInSuccess: result });
+    });
   });
 });
 
