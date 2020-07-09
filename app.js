@@ -28,7 +28,7 @@ app.use("/signIn", routers.signInRouter);
 app.use("/complete", routers.completeRouter);
 app.use("*", routers.notFoundRouter);
 
-app.listen(process.env.PORT || 3000, function () {
+app.listen(process.env.PORT || 8080, function () {
   console.log(
     "Express server listening on port %d in %s mode",
     this.address().port,
