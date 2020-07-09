@@ -17,6 +17,8 @@ const signUpSelectors = {
     zipCode: document.querySelectorAll('.zip-code'),
     addressInput: document.querySelectorAll('.address-input'),
     addressSearchBtn: document.querySelector('.address-search-btn'),
+    addressText: document.querySelector('.address-text'),
+    addressDetailText: document.querySelector('.address-detail-text'),
 
     checkAllTerm: document.querySelector('.check-all-term'),
     checkNecessaryList: document.querySelector('.check-necessary-list'),
@@ -144,6 +146,27 @@ signUpSelectors.checkNecessaryList.addEventListener('click', (e) => {
 // 둘중 한개 클릭시 전체 동의 체크
 signUpSelectors.checkAdAgree.addEventListener('click', (e) => {
     checkControlOtherList()
+})
+
+signUpSelectors.form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = `${signUpSelectors.emailTop.value}@${signUpSelectors.emailBottom.value}`;
+    const userObj = {
+        id: signUpSelectors.id.value,
+        password: signUpSelectors.password.value,
+        email: email,
+        name: signUpSelectors.name.value,
+        phone: signUpSelectors.phone.value,
+        postCode: signUpSelectors.zipCode.value,
+        address: signUpSelectors.addressText.value,
+        detailAddress: signUpSelectors.addressDetailText.value,
+        adAgree: signUpSelectors.checkAdAgree.value,
+    };
+
+
+    httpRequest.post('/signup', userObj).then((res) => {
+        // todo: 여기서 이제 complete페이지로 리다이렉트 시키기.
+    })
 })
 
 function setTimers() {
