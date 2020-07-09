@@ -7,5 +7,3 @@
 
 # embedded db
 data/**/*.db
-
-public/js/.gitkeep
