@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./start_bash.sh & node app.js",
+    "start": "node app.js",
     "start:dev": "nodemon --exec './start.sh & node app.js' --ignore 'public/js/*'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
