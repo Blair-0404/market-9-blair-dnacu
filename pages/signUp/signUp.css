@@ -186,6 +186,9 @@
 
 #signup-wrap .agree-wrap .age-cutline {
     display: flex;
+    color: grey;
+
+
 }
 
 #signup-wrap .small-font {
