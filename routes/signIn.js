@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { userListDB } = require("../data");
+const repository = require("../data/index.js");
 
 /* GET signIn page. */
 router.get("/", function (req, res, next) {
@@ -20,7 +20,7 @@ router.post("/", function (req, res, next) {
     res.sendStatus(400);
   }
 
-  userListDB.getUserInfo(id).then((data) => {
+  repository.getUserInfo(id).then((data) => {
     if (!data) res.sendStatus(400);
 
     res.json({ signInSuccess: data.password === password });
