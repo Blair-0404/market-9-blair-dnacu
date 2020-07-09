@@ -36,7 +36,6 @@ const getUserInfo = (id) =>
  * @param {User} userInfo - 저장할 유저의 정보 입력
  * @returns {Promise<boolean>} - 저장 성공 시 true, 실패 시 err반환
  */
-<<<<<<< HEAD
 // const addUser = (userInfo) =>
 //     new Promise((resolve, reject) => {
 //         userList.findOne({id}, (err, docs) => {
