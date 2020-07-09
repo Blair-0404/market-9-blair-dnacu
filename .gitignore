@@ -3,8 +3,9 @@
 .vscode
 
 # static files
-public/js
+public/**/*.js
 
 # embedded db
 data/**/*.db
 
+public/js/.gitkeep
