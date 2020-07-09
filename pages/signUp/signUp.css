@@ -51,7 +51,6 @@
 
 #signup-wrap form .invalid {
     border-color: red;
-    color: red;
     width: 100%;
 }
 
