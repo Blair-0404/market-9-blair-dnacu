@@ -10,9 +10,8 @@ html(lang='en')
             include ./utils.js
             include ./signUp.js
             include ../../apis/httpRequest.js
-        script(
-            src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
-        )
+        script(src='https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js')
+            include ./address.js
     body
         #signup-wrap
             img.title(
@@ -28,6 +27,7 @@ html(lang='en')
                     .input-wrapper
                         input.id(
                             type="text"
+                            spellCheck=false
                             placeholder="아이디 *(4~20)"
                             minlength="4"
                             maxlength="20"
@@ -57,6 +57,7 @@ html(lang='en')
                         .email-wrap
                             input.email-top(
                                 type="text"
+                                spellCheck=false
                                 placeholder="이메일 앞자리*"
                                 minlength="8"
                                 maxlength="20"
@@ -65,6 +66,7 @@ html(lang='en')
                             .email @
                             input.email-bottom(
                                 type="text"
+                                spellCheck=false
                                 placeholder="이메일 뒷자리*"
                                 minlength="8"
                                 maxlength="20"
@@ -72,28 +74,30 @@ html(lang='en')
 
                             )
                         label.email-msg
-                        select#email-select(
-                            name="이메일"
-                        )
-                            option(
-                                value=""
-                                selected="true"
-                            ) 이메일 선택
-                            option(
-                                value="gmail.com"
-                            ) gmail.com
-                            option(
-                                value="naver.com"
-                            ) naver.com
-                            option(
-                                value="woowahan.com"
-                            ) woowa.com
-                            option(
-                                value=""
-                            ) 직접입력
+                        .email-select-wrap
+                            select#email-select(
+                                name="이메일"
+                            )
+                                option(
+                                    value=""
+                                    selected="true"
+                                ) 이메일 선택
+                                option(
+                                    value="gmail.com"
+                                ) gmail.com
+                                option(
+                                    value="naver.com"
+                                ) naver.com
+                                option(
+                                    value="woowahan.com"
+                                ) woowa.com
+                                option(
+                                    value=""
+                                ) 직접입력
                     .input-wrapper
                         input.name(
                             type="text"
+                            spellCheck=false
                             placeholder="이름*"
                             required=true
 
@@ -121,6 +125,7 @@ html(lang='en')
                             .auth-timer-wrapper
                                 input.phone-auth-number(
                                     type="text"
+                                    spellCheck=false
                                     placeholder="인증번호 6자리 입력"
                                     maxlength=6
                                 )
@@ -130,10 +135,10 @@ html(lang='en')
                                 value="확인"
                                 disabled=true
                             )
-                        label.phone-auth-msg
+                    label.phone-auth-msg
                         ul
-                            li 인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.
-                            li 인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.
+                            li &centerdot;&#9;인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.
+                            li &centerdot;&#9;인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.
 
                 .address-wrap.section
                     .checkbox-wrap
@@ -147,23 +152,32 @@ html(lang='en')
                         .search-postal-code
                             input.zip-code.address-input(
                                 type="text"
+                                spellCheck=false
                                 placeholder="우편번호"
-                                readonly
+                                disabled=true
                             )
                             input.blue-button.address-search-btn(
                                 type="button"
                                 value="주소찾기"
                                 disabled
                             )
+                        #layer-wrap                            
+                            #layer
+                                div.search-address-header
+                                    div 주소 검색
+                                    button#btnCloseLayer ╳
+
                         input.address-text.address-input(
                             type="text"
+                            spellCheck=false
                             placeholder="주소"
-                            readonly
+                            disabled=true
                         )
                         input.address-detail-text.address-input(
                             type="text"
+                            spellCheck=false
                             placeholder="상세주소"
-                            readonly
+                            disabled=true
                         )
                 .agree-wrap
                     .checkbox-wrap
@@ -186,7 +200,7 @@ html(lang='en')
                             type="checkbox"
                         )
                         div 광고성 정보 수신 동의 (선택)
-                    .age-cutline.small-font 만 14세 이상 회원만 가입 가능합니다.
+                    .age-cutline.small-font &centerdot;&#9;만 14세 이상 회원만 가입 가능합니다.
                         .underline 내용보기
                 input.finish-button(
                     type="submit"

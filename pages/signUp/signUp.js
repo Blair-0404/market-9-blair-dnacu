@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import { execDaumPostcode, closeDaumPostcode } from "/js/address.js";
+=======
 import { httpRequest } from "/js/httpRequest.js";
+>>>>>>> 519191d60837c7add6f49ce5b11c15996df61d73
 
 const signUpSelectors = {
   form: document.querySelector("form"),
@@ -21,6 +25,10 @@ const signUpSelectors = {
   addressSearchBtn: document.querySelector(".address-search-btn"),
   addressText: document.querySelector(".address-text"),
   addressDetailText: document.querySelector(".address-detail-text"),
+<<<<<<< HEAD
+  closeAdressBtn: document.querySelector("#btnCloseLayer"),
+=======
+>>>>>>> 519191d60837c7add6f49ce5b11c15996df61d73
 
   checkAllTerm: document.querySelector(".check-all-term"),
   checkNecessaryList: document.querySelector(".check-necessary-list"),
@@ -86,8 +94,10 @@ signUpSelectors.emailSelect.addEventListener("change", (e) => {
 });
 
 signUpSelectors.phone.addEventListener("focusout", (e) => {
-  e.preventDefault();
   isValidPhoneNumber();
+});
+signUpSelectors.phone.addEventListener("input", (e) => {
+  isValidPhoneNumber2();
 });
 
 signUpSelectors.phoneAuthBtn.addEventListener("click", (e) => {
@@ -114,14 +124,23 @@ signUpSelectors.phoneAuthInput.addEventListener("focusout", (e) => {
   e.preventDefault();
   isValidPhoneAuthNumber();
 });
+signUpSelectors.phoneAuthInput.addEventListener("input", (e) => {
+  e.preventDefault();
+  isValidPhoneAuthNumber2();
+});
 
 signUpSelectors.phoneAuthConfirmBtn.addEventListener("click", (e) => {
   clearTimers();
   alert("인증이 완료되었습니다.");
 
-  signUpSelectors.phoneResendBtn.disabled = true;
-  signUpSelectors.phoneAuthInput.disabled = true;
-  signUpSelectors.phoneAuthConfirmBtn.disabled = true;
+  signUpSelectors.phone.disabled = true;
+
+  signUpSelectors.phoneResendBtn.style.display = "none";
+  signUpSelectors.phoneAuthBtn.disabled = false;
+
+  document.querySelector(".auth-input-wrapper").style.display = "none";
+  // signUpSelectors.phoneAuthInput.disabled = true;
+  // signUpSelectors.phoneAuthConfirmBtn.disabled = true;
 });
 
 // 주소 옵션박스 체크시 주소창 열림
@@ -131,6 +150,10 @@ signUpSelectors.checkSelectInfo.addEventListener("click", (e) => {
 
 signUpSelectors.addressSearchBtn.addEventListener("click", () => {
   execDaumPostcode();
+});
+
+signUpSelectors.closeAdressBtn.addEventListener("click", () => {
+  closeDaumPostcode();
 });
 
 // 동의 체크박스 클릭시 다른 항목들 자동체크
@@ -293,10 +316,19 @@ function isValidPhoneNumber() {
     signUpSelectors.phone.classList.add("invalid");
     label.classList.add("invalid");
     label.textContent = VALIDATION_MESSAGES.PHONE_INVALID;
-  } else {
+  }
+}
+
+function isValidPhoneNumber2() {
+  const phone = signUpSelectors.phone.value.trim();
+  const label = document.querySelector(".phone-msg");
+  const regExpPhone = /^\d{3}\d{4}\d{4}$/;
+  if (regExpPhone.test(phone)) {
     signUpSelectors.phoneAuthBtn.disabled = false;
     signUpSelectors.phone.classList.remove("invalid");
     label.textContent = VALIDATION_MESSAGES.INITIALIZER;
+  } else {
+    signUpSelectors.phoneAuthBtn.disabled = true;
   }
 }
 
@@ -309,38 +341,36 @@ function isValidPhoneAuthNumber() {
     phoneAuthInput.classList.add("invalid");
     label.classList.add("invalid");
     label.textContent = VALIDATION_MESSAGES.PHONE_AUTH_NUM;
-  } else {
+  }
+}
+function isValidPhoneAuthNumber2() {
+  const phoneAuthInput = signUpSelectors.phoneAuthInput;
+  const phoneAuthNumber = signUpSelectors.phoneAuthInput.value.trim();
+  const label = document.querySelector(".phone-auth-msg");
+
+  if (phoneAuthNumber.length >= VALIDATION_LENGTHS.PHONE_AUTH_NUM) {
     signUpSelectors.phoneAuthConfirmBtn.disabled = false;
     phoneAuthInput.classList.remove("invalid");
     label.textContent = VALIDATION_MESSAGES.INITIALIZER;
+  } else {
+    signUpSelectors.phoneAuthConfirmBtn.disabled = true;
   }
 }
 
-// 주소 옵션박스 체크시 주소창 열림 cb
+// 주소 옵션박스 체크시 주소창 열림
 function isSelectedAddressCheckbox() {
   if (signUpSelectors.checkSelectInfo.checked === true) {
     signUpSelectors.addressInput.forEach((val) => {
-      val.removeAttribute("readonly");
+      val.removeAttribute("disabled");
     });
     signUpSelectors.addressSearchBtn.removeAttribute("disabled");
   } else {
     signUpSelectors.addressInput.forEach((val) => {
-      val.setAttribute("readonly", "");
+      val.setAttribute("disabled", "");
+      val.value = "";
     });
     signUpSelectors.addressSearchBtn.setAttribute("disabled", "");
   }
-}
-
-// 검색주소 결과 input-value에 가져오기 cb
-function execDaumPostcode() {
-  const zipCodeInput = document.querySelector(".zip-code");
-  const roadAddress = document.querySelector(".address-text");
-  new daum.Postcode({
-    oncomplete: function (data) {
-      zipCodeInput.value = data.zonecode;
-      roadAddress.value = data.roadAddress;
-    },
-  }).open();
 }
 
 // 동의 체크박스 로직구현 cb
