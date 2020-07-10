@@ -27,6 +27,7 @@ html(lang='en')
                     .input-wrapper
                         input.id(
                             type="text"
+                            spellCheck=false
                             placeholder="아이디 *(4~20)"
                             minlength="4"
                             maxlength="20"
@@ -56,6 +57,7 @@ html(lang='en')
                         .email-wrap
                             input.email-top(
                                 type="text"
+                                spellCheck=false
                                 placeholder="이메일 앞자리*"
                                 minlength="8"
                                 maxlength="20"
@@ -64,6 +66,7 @@ html(lang='en')
                             .email @
                             input.email-bottom(
                                 type="text"
+                                spellCheck=false
                                 placeholder="이메일 뒷자리*"
                                 minlength="8"
                                 maxlength="20"
@@ -71,28 +74,30 @@ html(lang='en')
 
                             )
                         label.email-msg
-                        select#email-select(
-                            name="이메일"
-                        )
-                            option(
-                                value=""
-                                selected="true"
-                            ) 이메일 선택
-                            option(
-                                value="gmail.com"
-                            ) gmail.com
-                            option(
-                                value="naver.com"
-                            ) naver.com
-                            option(
-                                value="woowahan.com"
-                            ) woowa.com
-                            option(
-                                value=""
-                            ) 직접입력
+                        .email-select-wrap
+                            select#email-select(
+                                name="이메일"
+                            )
+                                option(
+                                    value=""
+                                    selected="true"
+                                ) 이메일 선택
+                                option(
+                                    value="gmail.com"
+                                ) gmail.com
+                                option(
+                                    value="naver.com"
+                                ) naver.com
+                                option(
+                                    value="woowahan.com"
+                                ) woowa.com
+                                option(
+                                    value=""
+                                ) 직접입력
                     .input-wrapper
                         input.name(
                             type="text"
+                            spellCheck=false
                             placeholder="이름*"
                             required=true
 
@@ -120,6 +125,7 @@ html(lang='en')
                             .auth-timer-wrapper
                                 input.phone-auth-number(
                                     type="text"
+                                    spellCheck=false
                                     placeholder="인증번호 6자리 입력"
                                     maxlength=6
                                 )
@@ -146,26 +152,32 @@ html(lang='en')
                         .search-postal-code
                             input.zip-code.address-input(
                                 type="text"
+                                spellCheck=false
                                 placeholder="우편번호"
-                                readonly
+                                disabled=true
                             )
                             input.blue-button.address-search-btn(
                                 type="button"
                                 value="주소찾기"
                                 disabled
                             )
-                        #layer
-                            img#btnCloseLayer(src='//t1.daumcdn.net/postcode/resource/images/close.png' style='cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1' onclick='closeDaumPostcode()' alt='닫기 버튼')
+                        #layer-wrap                            
+                            #layer
+                                div.search-address-header
+                                    div 주소 검색
+                                    button#btnCloseLayer ╳
 
                         input.address-text.address-input(
                             type="text"
+                            spellCheck=false
                             placeholder="주소"
-                            readonly
+                            disabled=true
                         )
                         input.address-detail-text.address-input(
                             type="text"
+                            spellCheck=false
                             placeholder="상세주소"
-                            readonly
+                            disabled=true
                         )
                 .agree-wrap
                     .checkbox-wrap
