@@ -1,6 +1,7 @@
+
 #main-wrap {
   width: 380px;
-  margin: 0 auto;
+  margin: 150px auto;
 
   display: flex;
   flex-direction: column;

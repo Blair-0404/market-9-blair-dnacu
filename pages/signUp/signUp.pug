@@ -10,9 +10,8 @@ html(lang='en')
             include ./utils.js
             include ./signUp.js
             include ../../apis/httpRequest.js
-        script(
-            src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
-        )
+        script(src='https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js')
+            include ./address.js
     body
         #signup-wrap
             img.title(
@@ -155,6 +154,9 @@ html(lang='en')
                                 value="주소찾기"
                                 disabled
                             )
+                        #layer
+                            img#btnCloseLayer(src='//t1.daumcdn.net/postcode/resource/images/close.png' style='cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1' onclick='closeDaumPostcode()' alt='닫기 버튼')
+
                         input.address-text.address-input(
                             type="text"
                             placeholder="주소"
