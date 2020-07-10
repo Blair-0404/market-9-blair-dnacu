@@ -4,9 +4,11 @@
 }
 #signup-complete-sction #signup-complete-wrap {
   width: 400px;
-  margin: 0 auto;
-  min-height: 100vh;
-  padding-top: 100px;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 /*top*/
 #signup-complete-sction #signup-complete-wrap .title-wrap {
@@ -25,12 +27,12 @@
 }
 /*moveToMain*/
 #signup-complete-wrap .move-main-link {
-  margin-bottom: 25px;
+  margin-bottom: 12px;
 }
 #signup-complete-wrap .move-main-link a {
   color: #177edb;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 500;
   text-decoration: none;
 }
 
@@ -41,8 +43,8 @@
   margin-bottom: 10px;
 }
 #signup-complete-sction #signup-complete-wrap .user-info-wrap .row {
-  margin-bottom: 10px;
   display: flex;
+  line-height: 28px;
 }
 #signup-complete-sction #signup-complete-wrap .user-info-wrap .key {
   color: grey;

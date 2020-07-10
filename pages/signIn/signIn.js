@@ -46,6 +46,7 @@ const signInHandler = (e) => {
 };
 
 const init = () => {
+  signInWrap.classList.remove("on");
   const savedId = localStorage.getItem("id");
   if (savedId) {
     signInWrap.querySelector("input.id").value = savedId;

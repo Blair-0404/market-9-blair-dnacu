@@ -38,6 +38,7 @@ app.use(express.urlencoded());
 app.use("/", routers.mainRouter);
 app.use("/signUp", routers.signUpRouter);
 app.use("/signIn", routers.signInRouter);
+app.use("/signOut", routers.signOutRouter);
 app.use("/complete", routers.completeRouter);
 app.use("*", routers.notFoundRouter);
 
