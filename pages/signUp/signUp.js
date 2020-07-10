@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { execDaumPostcode, closeDaumPostcode } from "/js/address.js";
-=======
-import { httpRequest } from "/js/httpRequest.js";
->>>>>>> 519191d60837c7add6f49ce5b11c15996df61d73
 
 const signUpSelectors = {
   form: document.querySelector("form"),
@@ -25,10 +21,7 @@ const signUpSelectors = {
   addressSearchBtn: document.querySelector(".address-search-btn"),
   addressText: document.querySelector(".address-text"),
   addressDetailText: document.querySelector(".address-detail-text"),
-<<<<<<< HEAD
   closeAdressBtn: document.querySelector("#btnCloseLayer"),
-=======
->>>>>>> 519191d60837c7add6f49ce5b11c15996df61d73
 
   checkAllTerm: document.querySelector(".check-all-term"),
   checkNecessaryList: document.querySelector(".check-necessary-list"),
