@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/woowa-techcamp-2020/market-9-blair-dnacu#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "nedb": "^1.8.0",
     "pug": "^3.0.0",
     "serve-favicon": "^2.5.0"

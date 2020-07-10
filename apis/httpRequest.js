@@ -25,7 +25,7 @@ const requestGenerator = (method, url, params) => {
       }
     };
 
-    xhttp.send(JSON.stringify(params));
+    xhttp.send(JSON.stringify(params || ""));
   });
 };
 
