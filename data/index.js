@@ -1,4 +1,6 @@
 const DataStore = require("nedb");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const userList = new DataStore({
   filename: "data/userList.db",
@@ -41,6 +43,13 @@ const addUser = (userInfo) =>
     userList.find({ id: userInfo.id }, (err, docs) => {
       if (docs.length > 0) reject({ code: "AlreadyExist" });
       else
+
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+          bcrypt.hash(userInfo.password, salt, function(err, hash) {
+            // Store hash in your password DB.
+          });
+        });
+
         userList.insert({ ...userInfo }, (err, docs) => {
           if (err) reject({ code: "InsertFailed", message: err });
           else resolve(docs._id);
