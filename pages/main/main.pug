@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+  head
+    title #{locals.title}
+    meta( name='viewport', content='width=device-width, initial-scale=1.0')
+    style
+      include ./main.css
+      include ../../styles/reset.css
+      include ../../styles/components.css
+  body
+    #main-wrap
+      if locals.userId
+        .title #{locals.userId}님, 환영합니다!
+        input.btn-blue.submit.signOut(
+          type='submit'
+          value='로그아웃'
+        )
+      else
+        .title 사장님, 로그인해주세요!
+        a(href="/signIn")
+          input.btn-blue.submit(
+            type='submit'
+            value='배민사장님광장 로그인'
+          )
+        .options
+          div.small 아이디/비밀번호 찾기
+          div.small 
+            a(href="/signUp") 회원가입
+    script(type="module" src="/js/main.js")

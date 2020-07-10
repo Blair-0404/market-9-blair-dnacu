@@ -1,0 +1,74 @@
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(94, 190, 187);
+}
+
+#main-wrap {
+  width: 380px;
+  padding: 80px 40px;
+  background: white;
+  border: 3px solid #eee;
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: top 0.5s ease-in-out;
+}
+
+#main-wrap.on {
+  top: -30%;
+}
+
+#main-wrap .title {
+  font-size: 1.3rem;
+}
+
+#main-wrap .options {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#main-wrap .options .small {
+  font-size: 0.85rem;
+  color: darkgray;
+  font-weight: 500;
+  margin-left: 16px;
+
+  cursor: not-allowed;
+}
+
+#main-wrap .options .small a {
+  color: darkgray;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+#main-wrap .options .small:first-child {
+  position: relative;
+}
+
+#main-wrap .options .small:first-child::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  top: -1px;
+  right: -9px;
+  background-color: darkgray;
+}
+
+#main-wrap .submit {
+  margin: 20px 0 8px 0;
+  height: 70px;
+  font-weight: 500;
+
+  cursor: pointer;
+}

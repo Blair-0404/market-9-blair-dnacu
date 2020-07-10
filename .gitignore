@@ -1,6 +1,9 @@
 /node_modules
-
 .idea
-
 .vscode
 
+# static files
+# public/**/*.js
+
+# embedded db
+data/**/*.db
